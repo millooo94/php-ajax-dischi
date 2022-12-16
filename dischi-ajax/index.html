@@ -12,16 +12,22 @@
     <script src="js/main.js" defer></script>
 </head>
 <body>
-    <header></header>
-    <main id="app">
-        <div v-for="card in disks" class="card" style="width: 18rem;">
-            <img :src="card.poster" class="card-img-top" :alt="card.title">
-            <div class="card-body">
-              <h2>{{card.title}}</h2>
-              <div>{{card.author}}</div>
-              <div>{{card.year}}</div>
-            </div>
-          </div>
-    </main>
+    <div id="app">
+        <header>
+            <select v-model="selected" @change="onChange" name="genres" id="genres">
+                <option v-for="genre in genres">{{genre}}</option>
+            </select>
+        </header>
+        <main>
+            <div v-for="album in disks" :key="album.title" class="card" style="width: 18rem;">
+                <img :src="album.poster" class="card-img-top" :alt="album.title">
+                <div class="card-body">
+                  <h2>{{album.title}}</h2>
+                  <div>{{album.author}}</div>
+                  <div>{{album.year}}</div>
+                </div>
+              </div>
+        </main>
+    </div>
 </body>
 </html>
