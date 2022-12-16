@@ -9,6 +9,9 @@
     <link rel="stylesheet" href="../assets/style.css">
 </head>
 <body>
-
+    <?php
+    include __DIR__ . '/includes/header.php';
+    include __DIR__ . '/includes/main.php';
+    ?>
 </body>
 </html>

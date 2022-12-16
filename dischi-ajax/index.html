@@ -13,6 +13,15 @@
 </head>
 <body>
     <header></header>
-    <main id="app"></main>
+    <main id="app">
+        <div v-for="card in disks" class="card" style="width: 18rem;">
+            <img :src="card.poster" class="card-img-top" :alt="card.title">
+            <div class="card-body">
+              <h2>{{card.title}}</h2>
+              <div>{{card.author}}</div>
+              <div>{{card.year}}</div>
+            </div>
+          </div>
+    </main>
 </body>
 </html>
