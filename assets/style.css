@@ -1,0 +1,32 @@
+header {
+    height: 3rem;
+    background-color: #2e3a46;
+  }
+  .logo {
+    width: 2%;
+    min-width: 38.5px;
+  }
+
+  body {
+    position: relative;
+  }
+  main {
+    background-color: #1e2d3b;
+  }
+  .container {
+    padding: 4rem;
+  }
+
+.contents {
+  height: 100%;
+  background-color: #2e3a46;
+}
+.author, .year {
+  color: #82766a;
+}
+
+select {
+  height: auto;
+  right: -1%;
+  transform: translate(-50%, -50%);
+}

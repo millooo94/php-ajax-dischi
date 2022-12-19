@@ -1,34 +1,32 @@
 new Vue({
     el: '#app',
     data: {
-        selected: '',
+        genre: 'all',
         disks: [],
         genres: [],
-        urlApi: location.href + 'api.php',
+        urlDisks: 'api/disks.php',
+        urlGenres: 'api/genres.php',
     },
     created() {
-        axios.get(this.urlApi)
+        axios.get(this.urlDisks)
         .then(axiosResponse => {
             this.disks = axiosResponse.data
-            this.disks.forEach(album => {
-               while (!this.genres.includes(album.genre)) {
-                this.genres.push(album.genre)
-               }
-            });
-            console.log(this.genres)
         });
+        axios.get(this.urlGenres)
+        .then(axiosResponse => {
+            this.genres = axiosResponse.data
+        })
     },
-    computed: {
-        onChange: function() {
-            axios.get(this.urlApi)
-            .then(axiosResponse => {
-                this.disks = axiosResponse.data.forEach(album => {
-                    if (album.genre == this.selected) {
-                        return album
-                    }
-                })
+    methods: {
+        changeSelect() {
+            axios.get(this.urlDisks, {
+                params: {
+                    genre: this.genre
+                },
             })
-
+            .then(axiosResponse => {
+                this.disks = axiosResponse.data
+            });
         }
     }
-})
+});

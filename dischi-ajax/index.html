@@ -13,21 +13,42 @@
 </head>
 <body>
     <div id="app">
-        <header>
-            <select v-model="selected" @change="onChange" name="genres" id="genres">
+        <header class="position-relative px-3 py-4">
+            <a href="#" class="d-flex align-items-center h-100">
+                <img
+                class="logo"
+                src="../assets/spotify-logo-png-7078.png"
+                alt="logo spotify"
+              >
+            </a>
+            <select @change="changeSelect()" class="position-absolute" v-model="genre" name="genres" id="genres">
+              <option value="all">All</option>
                 <option v-for="genre in genres">{{genre}}</option>
             </select>
         </header>
         <main>
-            <div v-for="album in disks" :key="album.title" class="card" style="width: 18rem;">
-                <img :src="album.poster" class="card-img-top" :alt="album.title">
-                <div class="card-body">
-                  <h2>{{album.title}}</h2>
-                  <div>{{album.author}}</div>
-                  <div>{{album.year}}</div>
+            <div class="container">
+              <div
+                class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5 g-5"
+              >
+              <div v-for="album in disks" :key="album.title" class="col">
+                <div class="contents p-4">
+                  <img
+                    class="img-fluid"
+                    :src="album.poster"
+                    :alt="album.title"
+                  >
+                  <h2 class="title text-white text-center mt-4 mb-3 text-uppercase fs-5">
+                    {{ album.title }}
+                  </h2>
+                  <span class="author d-block text-center fs-6">{{ album.author }}</span>
+                  <span class="year d-block text-center fs-6">{{ album.year }}</span>
                 </div>
               </div>
-        </main>
+              </div>
+              </div>
+            </div>
+          </main>
     </div>
 </body>
 </html>
